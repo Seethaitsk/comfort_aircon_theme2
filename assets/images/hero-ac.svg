@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" width="600" height="450" fill="none">
+  <defs>
+    <linearGradient id="acBody" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="70%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#e2e8f0"/>
+    </linearGradient>
+    <linearGradient id="acLouver" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#cbd5e1"/>
+      <stop offset="100%" stop-color="#94a3b8"/>
+    </linearGradient>
+    <linearGradient id="coolBreeze" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#16a9d9" stop-opacity="0.6"/>
+      <stop offset="50%" stop-color="#38bdf8" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#0b3d91" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="acShadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="16" stdDeviation="16" flood-color="#0b3d91" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+
+  <!-- Background decorative circular glow -->
+  <circle cx="300" cy="220" r="190" fill="#e0f2fe" opacity="0.6"/>
+  <circle cx="300" cy="220" r="140" fill="#bae6fd" opacity="0.4"/>
+
+  <!-- AC Indoor Unit -->
+  <g filter="url(#acShadow)">
+    <!-- Main Shell -->
+    <rect x="80" y="80" width="440" height="135" rx="16" fill="url(#acBody)" stroke="#cbd5e1" stroke-width="2"/>
+    
+    <!-- Top Intake Grille Lines -->
+    <path d="M100 95h400M100 102h400M100 109h400" stroke="#e2e8f0" stroke-width="2" stroke-linecap="round"/>
+    
+    <!-- Chrome Trim Accent Line -->
+    <path d="M80 180h440" stroke="#16a9d9" stroke-width="3"/>
+    
+    <!-- Bottom Air Flap / Louver -->
+    <rect x="95" y="185" width="410" height="20" rx="4" fill="url(#acLouver)"/>
+    <path d="M105 195h390" stroke="#f1f5f9" stroke-width="1.5" stroke-linecap="round"/>
+
+    <!-- Carrier Logo Branding Placeholder on AC -->
+    <rect x="110" y="138" width="68" height="20" rx="4" fill="#0b3d91"/>
+    <text x="144" y="152" fill="#ffffff" font-family="system-ui, sans-serif" font-size="10" font-weight="900" text-anchor="middle" letter-spacing="1">Carrier</text>
+    
+    <!-- Digital Hidden Display (24°C + Cooling Icon) -->
+    <g transform="translate(390, 132)">
+      <rect width="90" height="34" rx="8" fill="#0f172a" fill-opacity="0.06"/>
+      <text x="40" y="24" fill="#16a9d9" font-family="'Courier New', monospace, sans-serif" font-size="20" font-weight="bold">24°C</text>
+      <!-- Snowflake indicator -->
+      <circle cx="18" cy="17" r="6" fill="#16a9d9" fill-opacity="0.2"/>
+      <circle cx="18" cy="17" r="3" fill="#16a9d9"/>
+    </g>
+
+    <!-- Power & Eco LEDs -->
+    <circle cx="495" cy="142" r="3" fill="#22c55e"/>
+    <circle cx="495" cy="154" r="3" fill="#38bdf8"/>
+  </g>
+
+  <!-- Cool Air Waves / Breeze Streams -->
+  <g opacity="0.85">
+    <path d="M140 215 C130 280, 80 340, 50 390" stroke="url(#coolBreeze)" stroke-width="8" stroke-linecap="round" fill="none"/>
+    <path d="M220 215 C210 290, 170 360, 140 410" stroke="url(#coolBreeze)" stroke-width="12" stroke-linecap="round" fill="none"/>
+    <path d="M300 215 C300 300, 290 370, 280 430" stroke="url(#coolBreeze)" stroke-width="14" stroke-linecap="round" fill="none"/>
+    <path d="M380 215 C390 290, 430 360, 460 410" stroke="url(#coolBreeze)" stroke-width="12" stroke-linecap="round" fill="none"/>
+    <path d="M460 215 C470 280, 520 340, 550 390" stroke="url(#coolBreeze)" stroke-width="8" stroke-linecap="round" fill="none"/>
+  </g>
+
+  <!-- Floating Crystal Snowflakes & Cool Bubbles -->
+  <g fill="#16a9d9" opacity="0.75">
+    <circle cx="120" cy="300" r="5"/>
+    <circle cx="480" cy="290" r="6"/>
+    <circle cx="210" cy="370" r="4"/>
+    <circle cx="390" cy="380" r="5"/>
+    <circle cx="300" cy="320" r="7" opacity="0.4"/>
+    <circle cx="170" cy="260" r="3"/>
+    <circle cx="430" cy="250" r="4"/>
+  </g>
+
+  <!-- Modern Floating Feature Pill -->
+  <g transform="translate(360, 310)" filter="url(#acShadow)">
+    <rect width="180" height="48" rx="24" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+    <circle cx="25" cy="24" r="16" fill="#e0f2fe"/>
+    <path d="M20 24l3 3 7-7" stroke="#0284c7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="50" y="22" fill="#0f172a" font-family="system-ui, sans-serif" font-size="12" font-weight="700">100% Copper</text>
+    <text x="50" y="36" fill="#64748b" font-family="system-ui, sans-serif" font-size="10">Fast Cooling &amp; Durable</text>
+  </g>
+
+  <!-- Floating Star Rating Pill -->
+  <g transform="translate(60, 270)" filter="url(#acShadow)">
+    <rect width="170" height="48" rx="24" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+    <circle cx="25" cy="24" r="16" fill="#fef3c7"/>
+    <text x="25" y="28" fill="#d97706" font-family="system-ui, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">★</text>
+    <text x="50" y="22" fill="#0f172a" font-family="system-ui, sans-serif" font-size="12" font-weight="700">Carrier Inverter</text>
+    <text x="50" y="36" fill="#64748b" font-family="system-ui, sans-serif" font-size="10">Up to 60% Energy Saved</text>
+  </g>
+</svg>

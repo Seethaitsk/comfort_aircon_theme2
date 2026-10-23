@@ -1,0 +1,2164 @@
+/* ==========================================================================
+   COMFORT AIRCON - MAIN STYLESHEET
+   Carrier Authorized Dealer & AC Service Specialist in Pondicherry
+   Design: Modern "Cool Air" Aesthetic, Trustworthy, Responsive & Accessible
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. CSS VARIABLES & DESIGN TOKENS
+   -------------------------------------------------------------------------- */
+:root {
+  /* Brand Color Palette - Derived from Official Comfort Aircon Logo */
+  --color-primary: #16325c;          /* Deep Corporate Navy (from "Comfort") */
+  --color-primary-dark: #0f2240;     /* Darker navy */
+  --color-primary-light: #21477e;    /* Lighter navy */
+
+  --color-brand-red: #c81b2e;        /* Signature Vibrant Red (from "Aircon") */
+  --color-brand-red-hover: #a61221;  /* Darker Red on hover */
+  --color-brand-red-soft: #fef2f3;   /* Soft red tint */
+  --color-brand-red-glow: rgba(200, 27, 46, 0.22);
+
+  --color-accent: #1c76af;           /* Sky / Cyan Blue (Snowflake & Breeze) */
+  --color-accent-hover: #155e8c;
+  --color-accent-soft: #edf6fb;      /* Soft ice blue tint */
+  --color-accent-glow: rgba(28, 118, 175, 0.25);
+
+  /* Functional Colors */
+  --color-whatsapp: #25d366;
+  --color-whatsapp-hover: #20ba5a;
+  --color-call: #16325c;
+  --color-error: #c81b2e;
+  --color-error-bg: #fef2f2;
+  --color-success: #16a34a;
+  --color-success-bg: #f0fdf4;
+
+  /* Neutrals & Backgrounds */
+  --color-bg-body: #f4f8fc;          /* Fresh cool light grey/ice background */
+  --color-bg-surface: #ffffff;
+  --color-bg-subtle: #ebf3f9;
+  --color-text-main: #0f1c30;        /* Deep slate text */
+  --color-text-muted: #4e6178;       /* Secondary descriptive text */
+  --color-text-light: #899eb6;
+  --color-border: #d7e4f0;
+  --color-border-hover: #b2cbe0;
+
+  /* Typography */
+  --font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-heading: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Elevation Shadows */
+  --shadow-sm: 0 1px 3px rgba(22, 50, 92, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 14px rgba(22, 50, 92, 0.08), 0 2px 6px rgba(0, 0, 0, 0.03);
+  --shadow-lg: 0 10px 28px rgba(22, 50, 92, 0.12), 0 4px 10px rgba(0, 0, 0, 0.04);
+  --shadow-hover: 0 16px 36px rgba(22, 50, 92, 0.16), 0 6px 14px rgba(200, 27, 46, 0.12);
+  --shadow-modal: 0 24px 60px rgba(22, 50, 92, 0.28), 0 8px 24px rgba(0, 0, 0, 0.12);
+
+  /* Border Radii */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.25s ease;
+  --transition-smooth: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Layout Widths */
+  --container-max: 1240px;
+  --container-narrow: 980px;
+}
+
+/* --------------------------------------------------------------------------
+   2. RESET & BASE ELEMENTS
+   -------------------------------------------------------------------------- */
+[hidden] {
+  display: none !important;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--color-bg-body);
+  color: var(--color-text-main);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+body.modal-scroll-lock {
+  overflow: hidden;
+  touch-action: none;
+}
+
+img, svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+button, input, select, textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--color-primary);
+  line-height: 1.25;
+  font-weight: 700;
+}
+
+/* Accessible focus ring */
+:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* --------------------------------------------------------------------------
+   3. LAYOUT & UTILITIES
+   -------------------------------------------------------------------------- */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+.site-main {
+  flex: 1 0 auto;
+}
+
+.section-padding {
+  padding: 4.5rem 0;
+}
+
+.section-header {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 3.5rem auto;
+}
+
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--color-primary);
+  background: var(--color-accent-soft);
+  border: 1px solid rgba(22, 169, 217, 0.35);
+  padding: 0.35rem 0.9rem;
+  border-radius: var(--radius-full);
+  margin-bottom: 0.75rem;
+}
+
+.section-title {
+  font-size: 2.125rem;
+  margin-bottom: 0.85rem;
+  letter-spacing: -0.5px;
+}
+
+.section-desc {
+  font-size: 1.0625rem;
+  color: var(--color-text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   4. BUTTONS & BADGES
+   -------------------------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  padding: 0.7rem 1.35rem;
+  border-radius: var(--radius-sm);
+  transition: var(--transition-normal);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background: var(--color-brand-red);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(200, 27, 46, 0.25);
+}
+.btn-primary:hover {
+  background: var(--color-brand-red-hover);
+  box-shadow: 0 6px 16px rgba(200, 27, 46, 0.35);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background: #ffffff;
+  color: var(--color-primary);
+  border: 1.5px solid var(--color-border);
+}
+.btn-secondary:hover {
+  border-color: var(--color-brand-red);
+  color: var(--color-brand-red);
+  background: var(--color-brand-red-soft);
+  transform: translateY(-1px);
+}
+
+.btn-accent {
+  background: var(--color-accent);
+  color: #ffffff;
+}
+.btn-accent:hover {
+  background: var(--color-accent-hover);
+  transform: translateY(-1px);
+}
+
+.btn-whatsapp {
+  background: var(--color-whatsapp);
+  color: #ffffff;
+}
+.btn-whatsapp:hover {
+  background: var(--color-whatsapp-hover);
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.35);
+  transform: translateY(-1px);
+}
+
+.btn-call {
+  background: var(--color-call);
+  color: #ffffff;
+}
+.btn-call:hover {
+  background: var(--color-primary-dark);
+  transform: translateY(-1px);
+}
+
+/* Dealer Badge */
+.dealer-seal-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: linear-gradient(135deg, #ffffff 0%, var(--color-accent-soft) 100%);
+  border: 1.5px solid var(--color-accent);
+  border-radius: var(--radius-full);
+  padding: 0.45rem 1.15rem;
+  box-shadow: 0 2px 8px rgba(22, 169, 217, 0.15);
+  margin-bottom: 1.25rem;
+}
+
+.dealer-seal-badge .seal-icon {
+  width: 20px;
+  height: 20px;
+  color: var(--color-primary);
+}
+
+.dealer-seal-badge .seal-text {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  letter-spacing: 0.4px;
+}
+
+/* --------------------------------------------------------------------------
+   5. HEADER & TOP BAR
+   -------------------------------------------------------------------------- */
+.site-header {
+  position: relative;
+  width: 100%;
+  z-index: 1000;
+  background: #ffffff;
+}
+
+/* Top bar */
+.header-top-bar {
+  background: var(--color-primary);
+  color: #e2e8f0;
+  font-size: 0.8125rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.45rem 0;
+}
+
+.top-bar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.top-bar-contact {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.top-contact-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: #f1f5f9;
+}
+.top-contact-link:hover {
+  color: var(--color-accent);
+}
+
+.top-divider {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.top-bar-right {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.authorized-badge-sm {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.top-social-links {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.social-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: var(--radius-xs);
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.12);
+  transition: var(--transition-fast);
+}
+.social-icon:hover {
+  background: var(--color-accent);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+/* Main bar */
+.header-main-bar {
+  background: #ffffff;
+  transition: box-shadow var(--transition-normal), background-color var(--transition-normal);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.header-main-bar.is-sticky {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  box-shadow: var(--shadow-md);
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(8px);
+}
+
+.main-bar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0.85rem;
+  padding-bottom: 0.85rem;
+  gap: 1.5rem;
+}
+
+/* Logo */
+.site-brand {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  text-decoration: none;
+}
+
+.site-logo-img {
+  height: 48px;
+  width: auto;
+  max-width: 200px;
+  object-fit: contain;
+  transition: transform var(--transition-fast);
+}
+
+.site-brand:hover .site-logo-img {
+  transform: scale(1.02);
+}
+
+/* Navigation */
+.main-navigation {
+  display: block;
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.nav-link {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-text-main);
+  padding: 0.5rem 0.85rem;
+  border-radius: var(--radius-xs);
+  transition: var(--transition-fast);
+  position: relative;
+  white-space: nowrap;
+}
+
+.nav-link:hover {
+  color: var(--color-primary);
+  background: var(--color-accent-soft);
+}
+
+.nav-link.active {
+  color: var(--color-primary);
+  background: var(--color-accent-soft);
+}
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0.85rem;
+  right: 0.85rem;
+  height: 2.5px;
+  background: var(--color-brand-red);
+  border-radius: var(--radius-full);
+}
+
+/* Header Action Buttons */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  flex-shrink: 0;
+}
+
+.btn-call-header {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.85rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  background: #f1f5f9;
+  color: var(--color-primary);
+  border: 1px solid var(--color-border);
+}
+.btn-call-header:hover {
+  background: var(--color-accent-soft);
+  border-color: var(--color-accent);
+}
+
+.btn-whatsapp-header {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.85rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  background: var(--color-whatsapp);
+  color: #ffffff;
+}
+.btn-whatsapp-header:hover {
+  background: var(--color-whatsapp-hover);
+  box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+}
+
+.btn-enquire-header {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.55rem 1.15rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  border-radius: var(--radius-sm);
+  background: var(--color-brand-red);
+  color: #ffffff;
+  box-shadow: 0 3px 10px rgba(200, 27, 46, 0.25);
+}
+.btn-enquire-header:hover {
+  background: var(--color-brand-red-hover);
+  box-shadow: 0 5px 14px rgba(200, 27, 46, 0.35);
+}
+
+.mobile-nav-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  background: #f1f5f9;
+  color: var(--color-primary);
+}
+
+/* Mobile Drawer */
+.mobile-nav-drawer {
+  display: none;
+  background: #ffffff;
+  border-top: 1px solid var(--color-border);
+  box-shadow: var(--shadow-lg);
+  padding: 1.25rem;
+  animation: slideDown 0.25s ease-out;
+}
+
+.mobile-dealer-badge {
+  padding: 0.5rem 0.75rem;
+  background: var(--color-accent-soft);
+  border-radius: var(--radius-sm);
+  margin-bottom: 1rem;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  text-align: center;
+}
+
+.mobile-nav-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-bottom: 1.5rem;
+}
+
+.mobile-nav-menu .nav-link {
+  display: block;
+  font-size: 1.05rem;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-sm);
+}
+
+.mobile-drawer-contact {
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.mobile-contact-title {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 0.6rem;
+}
+
+.mobile-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  padding: 0.35rem 0;
+}
+
+.mobile-social-wrap {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.85rem;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --------------------------------------------------------------------------
+   6. HERO / BANNER SECTION
+   -------------------------------------------------------------------------- */
+.hero-section {
+  position: relative;
+  background: linear-gradient(145deg, #ffffff 0%, #eef6fd 55%, #e1f1fc 100%);
+  padding: 4.5rem 0 5rem 0;
+  overflow: hidden;
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* Decorative backdrop glow */
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  right: -100px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(22, 169, 217, 0.15) 0%, rgba(11, 61, 145, 0.03) 70%, transparent 100%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  align-items: center;
+  gap: 3.5rem;
+}
+
+.hero-content {
+  max-width: 620px;
+}
+
+.hero-title {
+  font-size: 2.75rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  line-height: 1.15;
+  letter-spacing: -0.75px;
+  margin-bottom: 1.25rem;
+}
+
+.hero-title-accent {
+  color: var(--color-brand-red);
+  display: inline-block;
+}
+
+.hero-description {
+  font-size: 1.125rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.hero-cta-group {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+}
+
+.hero-cta-group .btn {
+  padding: 0.85rem 1.75rem;
+  font-size: 1rem;
+}
+
+/* Hero Key USPs strip */
+.hero-features-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid rgba(11, 61, 145, 0.12);
+}
+
+.hero-feature-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.hero-feature-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--color-accent-soft);
+  color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+.hero-feature-text {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  line-height: 1.3;
+}
+
+/* Hero Graphic */
+.hero-media {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-img {
+  width: 100%;
+  max-width: 540px;
+  height: auto;
+  filter: drop-shadow(0 18px 24px rgba(11, 61, 145, 0.14));
+}
+
+/* --------------------------------------------------------------------------
+   7. SERVICES OVERVIEW SECTION
+   -------------------------------------------------------------------------- */
+.services-section {
+  background: var(--color-bg-body);
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.service-card {
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  transition: var(--transition-normal);
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+}
+
+.service-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3.5px;
+  background: var(--color-brand-red);
+  opacity: 0;
+  transition: var(--transition-normal);
+  z-index: 3;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--color-border-hover);
+}
+
+.service-card:hover::after {
+  opacity: 1;
+}
+
+.service-media-wrap {
+  position: relative;
+  width: 100%;
+  height: 150px;
+  overflow: hidden;
+  background: #e2e8f0;
+}
+
+.service-media-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.service-card:hover .service-media-img {
+  transform: scale(1.08);
+}
+
+.service-icon-box {
+  position: absolute;
+  bottom: 10px;
+  right: 12px;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+  transition: var(--transition-normal);
+  z-index: 2;
+}
+
+.service-card:hover .service-icon-box {
+  background: var(--color-brand-red);
+  color: #ffffff;
+  transform: scale(1.08);
+}
+
+.service-card-body {
+  padding: 1.25rem 1.25rem 1.5rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.service-name {
+  font-size: 1.15rem;
+  margin-bottom: 0.5rem;
+  color: var(--color-primary);
+}
+
+.service-desc {
+  font-size: 0.90625rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  margin-bottom: 1.25rem;
+  flex-grow: 1;
+}
+
+.service-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--color-accent-hover);
+  margin-top: auto;
+}
+
+.service-card:hover .service-link {
+  color: var(--color-brand-red);
+  gap: 0.55rem;
+}
+
+.section-footer-cta {
+  text-align: center;
+}
+
+/* --------------------------------------------------------------------------
+   8. FEATURED PRODUCTS SECTION
+   -------------------------------------------------------------------------- */
+.products-section {
+  background: #ffffff;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.product-card {
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  transition: var(--transition-normal);
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--color-accent);
+}
+
+.product-image-wrap {
+  background: #f8fafc;
+  padding: 0;
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 220px;
+  overflow: hidden;
+}
+
+.product-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.45s ease;
+}
+
+.product-card:hover .product-img {
+  transform: scale(1.05);
+}
+
+.product-content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.product-badge {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 0.6875rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--color-primary);
+  background: var(--color-accent-soft);
+  border: 1px solid rgba(22, 169, 217, 0.4);
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-full);
+  margin-bottom: 0.6rem;
+}
+
+.product-name {
+  font-size: 1.15rem;
+  line-height: 1.3;
+  margin-bottom: 0.35rem;
+  color: var(--color-primary);
+}
+
+.product-model {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  margin-bottom: 1rem;
+}
+
+.model-label {
+  font-weight: 700;
+  color: var(--color-text-main);
+}
+
+.product-info-block {
+  margin-bottom: 0.85rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px dashed var(--color-border);
+}
+
+.product-info-heading {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--color-text-main);
+  letter-spacing: 0.5px;
+  margin-bottom: 0.25rem;
+}
+
+.product-spec-text,
+.product-feature-text {
+  font-size: 0.84rem;
+  color: var(--color-text-muted);
+  line-height: 1.45;
+}
+
+.product-action-row {
+  margin-top: auto;
+  padding-top: 0.75rem;
+}
+
+.btn-product-enquire {
+  width: 100%;
+  background: var(--color-brand-red);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  padding: 0.7rem 1rem;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 4px 10px rgba(200, 27, 46, 0.2);
+}
+.btn-product-enquire:hover {
+  background: var(--color-brand-red-hover);
+  box-shadow: 0 6px 14px rgba(200, 27, 46, 0.35);
+}
+
+/* --------------------------------------------------------------------------
+   9. WHY CHOOSE US SECTION
+   -------------------------------------------------------------------------- */
+.why-section {
+  background: var(--color-bg-body);
+}
+
+.reasons-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+}
+
+.reason-card {
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 2rem 1.75rem;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  gap: 1.25rem;
+  transition: var(--transition-normal);
+}
+
+.reason-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--color-border-hover);
+}
+
+.reason-number {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--color-accent);
+  opacity: 0.85;
+  font-family: monospace;
+  line-height: 1;
+}
+
+.reason-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.reason-title {
+  font-size: 1.1875rem;
+  margin-bottom: 0.5rem;
+  color: var(--color-primary);
+}
+
+.reason-desc {
+  font-size: 0.9375rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
+
+/* Showroom & Dealership Experience Banner */
+.dealership-feature-banner {
+  margin-top: 3.5rem;
+  background: #ffffff;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: var(--transition-normal);
+}
+.dealership-feature-banner:hover {
+  box-shadow: var(--shadow-hover);
+  border-color: var(--color-border-hover);
+}
+
+.dealership-feature-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: stretch;
+}
+
+.dealership-feature-media {
+  position: relative;
+  min-height: 380px;
+  overflow: hidden;
+  background: #091a36;
+}
+
+.dealership-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.dealership-feature-banner:hover .dealership-img {
+  transform: scale(1.03);
+}
+
+.dealership-badge-floating {
+  position: absolute;
+  top: 1.25rem;
+  left: 1.25rem;
+  background: rgba(9, 26, 54, 0.9);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #ffffff;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  padding: 0.45rem 0.95rem;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  z-index: 2;
+}
+
+.dealership-feature-content {
+  padding: 3rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.dealership-feature-title {
+  font-size: 1.65rem;
+  color: var(--color-primary);
+  margin: 0.6rem 0 1rem 0;
+  line-height: 1.3;
+}
+
+.dealership-feature-desc {
+  font-size: 0.9375rem;
+  color: var(--color-text-muted);
+  line-height: 1.65;
+  margin-bottom: 1.75rem;
+}
+
+.dealership-stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  padding: 1.25rem 0;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  margin-bottom: 1.75rem;
+}
+
+.dealership-stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-number {
+  font-size: 1.55rem;
+  font-weight: 800;
+  color: var(--color-brand-red);
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  font-weight: 600;
+  line-height: 1.3;
+  margin-top: 0.2rem;
+}
+
+/* --------------------------------------------------------------------------
+   10. SERVICE AREAS SECTION
+   -------------------------------------------------------------------------- */
+.areas-section {
+  background: #ffffff;
+  border-top: 1px solid var(--color-border);
+}
+
+.areas-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.area-card {
+  background: var(--color-bg-body);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 1.75rem 1.5rem;
+  text-align: center;
+  transition: var(--transition-normal);
+}
+
+.area-card:hover {
+  background: var(--color-accent-soft);
+  border-color: var(--color-accent);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.area-pin {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #ffffff;
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem auto;
+  box-shadow: var(--shadow-sm);
+}
+
+.area-name {
+  font-size: 1.25rem;
+  color: var(--color-primary);
+  margin-bottom: 0.4rem;
+}
+
+.area-sub {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+
+.areas-note-banner {
+  background: var(--color-accent-soft);
+  border: 1px solid rgba(22, 169, 217, 0.3);
+  border-radius: var(--radius-md);
+  padding: 1.25rem 2rem;
+  text-align: center;
+  font-size: 0.9375rem;
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+/* --------------------------------------------------------------------------
+   11. ENQUIRY CALL-TO-ACTION STRIP
+   -------------------------------------------------------------------------- */
+.enquiry-strip-section {
+  background: linear-gradient(135deg, rgba(9, 26, 54, 0.93) 0%, rgba(22, 50, 92, 0.90) 100%), url('../assets/images/livingroom.png') center/cover no-repeat;
+  color: #ffffff;
+  padding: 4.5rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.enquiry-strip-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 400px;
+  height: 100%;
+  background: radial-gradient(circle, rgba(200, 27, 46, 0.18) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.strip-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2.5rem;
+}
+
+.strip-content {
+  max-width: 600px;
+}
+
+.strip-title {
+  font-size: 2rem;
+  color: #ffffff;
+  margin-bottom: 0.65rem;
+}
+
+.strip-desc {
+  font-size: 1.0625rem;
+  color: #dbeafe;
+}
+
+.strip-buttons-group {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  flex-shrink: 0;
+}
+
+.strip-buttons-group .btn {
+  padding: 0.85rem 1.6rem;
+  font-size: 1rem;
+}
+
+.btn-strip-enquire {
+  background: var(--color-brand-red);
+  color: #ffffff;
+  font-weight: 700;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+}
+.btn-strip-enquire:hover {
+  background: #ffffff;
+  color: var(--color-brand-red);
+  box-shadow: 0 6px 18px rgba(255, 255, 255, 0.35);
+}
+
+.btn-strip-call {
+  background: #ffffff;
+  color: var(--color-primary);
+  border: 1.5px solid transparent;
+}
+.btn-strip-call:hover {
+  background: var(--color-accent-soft);
+  color: var(--color-primary);
+}
+
+/* --------------------------------------------------------------------------
+   12. UNDER MAINTENANCE TEMPLATE (About, Services, Products, Gallery, Contact)
+   -------------------------------------------------------------------------- */
+.maintenance-section {
+  padding: 6rem 0;
+  min-height: 65vh;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(180deg, #ffffff 0%, var(--color-bg-body) 100%);
+}
+
+.maintenance-card {
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: center;
+  background: #ffffff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 3.5rem 2.5rem;
+  box-shadow: var(--shadow-lg);
+}
+
+.maintenance-illustration-wrap {
+  width: 220px;
+  height: 160px;
+  margin: 0 auto 2rem auto;
+}
+
+.maintenance-illustration-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.maintenance-heading {
+  font-size: 2.25rem;
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+  letter-spacing: -0.5px;
+}
+
+.maintenance-text {
+  font-size: 1.125rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin-bottom: 2.5rem;
+}
+
+.maintenance-btn-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* --------------------------------------------------------------------------
+   13. FOOTER
+   -------------------------------------------------------------------------- */
+.site-footer {
+  background: #091a36;
+  color: #cbd5e1;
+  font-size: 0.9375rem;
+  border-top: 3.5px solid var(--color-brand-red);
+}
+
+.footer-top-section {
+  padding: 4.5rem 0 3.5rem 0;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 0.9fr 1.1fr 1.4fr;
+  gap: 2.5rem;
+}
+
+.footer-col-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 1.25rem;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.footer-col-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 36px;
+  height: 2.5px;
+  background: var(--color-brand-red);
+  border-radius: var(--radius-full);
+}
+
+.footer-brand {
+  display: inline-block;
+  text-decoration: none;
+  margin-bottom: 1.25rem;
+}
+
+.footer-logo-card {
+  display: inline-flex;
+  align-items: center;
+  background: #ffffff;
+  padding: 0.5rem 0.85rem;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  transition: transform var(--transition-fast);
+}
+
+.footer-brand:hover .footer-logo-card {
+  transform: scale(1.02);
+}
+
+.footer-logo-img {
+  height: 44px;
+  width: auto;
+  max-width: 175px;
+  object-fit: contain;
+}
+
+.footer-about-text {
+  color: #94a3b8;
+  line-height: 1.6;
+  margin-bottom: 1.25rem;
+}
+
+.footer-dealer-tag .tag-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  background: rgba(22, 169, 217, 0.12);
+  border: 1px solid rgba(22, 169, 217, 0.3);
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--radius-full);
+  margin-bottom: 1.25rem;
+}
+
+.footer-social-links {
+  display: flex;
+  gap: 0.65rem;
+}
+
+.footer-social-icon {
+  background: rgba(255, 255, 255, 0.08);
+}
+.footer-social-icon:hover {
+  background: var(--color-accent);
+  color: #ffffff;
+}
+
+.footer-links-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.footer-link {
+  color: #cbd5e1;
+  transition: var(--transition-fast);
+}
+.footer-link:hover {
+  color: var(--color-accent);
+  padding-left: 4px;
+}
+
+.footer-contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.footer-contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  line-height: 1.45;
+}
+
+.footer-contact-item .contact-icon {
+  color: var(--color-accent);
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+
+.footer-map-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  border: 1px solid rgba(22, 169, 217, 0.3);
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--radius-xs);
+  transition: var(--transition-fast);
+}
+.footer-map-btn:hover {
+  background: var(--color-accent);
+  color: #ffffff;
+}
+
+.footer-service-areas {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.areas-title {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.25rem;
+  text-transform: uppercase;
+}
+
+.areas-text {
+  font-size: 0.84rem;
+  color: #94a3b8;
+}
+
+.footer-bottom-strip {
+  background: #041027;
+  padding: 1.25rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  font-size: 0.8125rem;
+  color: #94a3b8;
+}
+
+.bottom-strip-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+/* --------------------------------------------------------------------------
+   14. FLOATING WHATSAPP BUTTON
+   -------------------------------------------------------------------------- */
+.floating-whatsapp {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: var(--color-whatsapp);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+  z-index: 900;
+  cursor: pointer;
+  transition: transform var(--transition-normal);
+}
+
+.floating-whatsapp:hover {
+  transform: scale(1.08);
+}
+
+.whatsapp-icon-wrap {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+}
+
+.whatsapp-icon-wrap svg {
+  width: 32px;
+  height: 32px;
+}
+
+.whatsapp-pulse {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: var(--color-whatsapp);
+  opacity: 0.7;
+  animation: whatsappPulse 2.2s infinite ease-out;
+  z-index: 1;
+}
+
+.whatsapp-tooltip {
+  position: absolute;
+  right: 70px;
+  background: #0f172a;
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.35rem 0.7rem;
+  border-radius: var(--radius-xs);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateX(10px);
+  transition: var(--transition-fast);
+}
+
+.floating-whatsapp:hover .whatsapp-tooltip {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+@keyframes whatsappPulse {
+  0% { transform: scale(0.95); opacity: 0.8; }
+  50% { transform: scale(1.35); opacity: 0; }
+  100% { transform: scale(1.35); opacity: 0; }
+}
+
+/* --------------------------------------------------------------------------
+   15. ENQUIRY MODAL & FORM STYLES (Strictly 7 Fields)
+   -------------------------------------------------------------------------- */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(7, 25, 59, 0.75);
+  backdrop-filter: blur(4px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  overflow-y: auto;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-normal);
+}
+
+.modal-backdrop.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-dialog {
+  width: 100%;
+  max-width: 540px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-content {
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-modal);
+  overflow-y: auto;
+  padding: 2rem 2.25rem;
+  position: relative;
+  transform: translateY(20px) scale(0.97);
+  transition: transform var(--transition-smooth);
+}
+
+.modal-backdrop.is-visible .modal-content {
+  transform: translateY(0) scale(1);
+}
+
+.modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.modal-title {
+  font-size: 1.5rem;
+  color: var(--color-primary);
+  margin-bottom: 0.25rem;
+}
+
+.modal-subtitle {
+  font-size: 0.8125rem;
+  color: var(--color-accent);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.modal-close-trigger {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-xs);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-muted);
+  transition: var(--transition-fast);
+}
+.modal-close-trigger:hover {
+  background: var(--color-error-bg);
+  color: var(--color-error);
+}
+
+/* Form Fields */
+.enquiry-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+}
+
+.form-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.field-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text-main);
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.field-label .req {
+  color: var(--color-error);
+}
+
+.optional-tag {
+  font-size: 0.75rem;
+  font-weight: normal;
+  color: var(--color-text-light);
+}
+
+.field-input,
+.field-select,
+.field-textarea {
+  width: 100%;
+  padding: 0.7rem 0.9rem;
+  font-size: 0.9375rem;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: #ffffff;
+  color: var(--color-text-main);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.field-input:focus,
+.field-select:focus,
+.field-textarea:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px var(--color-accent-glow);
+}
+
+.field-input.is-invalid,
+.field-select.is-invalid,
+.field-textarea.is-invalid {
+  border-color: var(--color-error);
+  background-color: var(--color-error-bg);
+}
+
+/* Phone prefix wrapper */
+.phone-input-wrap {
+  display: flex;
+  align-items: stretch;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: #ffffff;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.phone-input-wrap:focus-within {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px var(--color-accent-glow);
+}
+
+.phone-input-wrap:has(.is-invalid) {
+  border-color: var(--color-error);
+}
+
+.country-prefix {
+  display: flex;
+  align-items: center;
+  padding: 0 0.85rem;
+  background: #f1f5f9;
+  border-right: 1px solid var(--color-border);
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  user-select: none;
+}
+
+.phone-input {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.counter-text {
+  font-size: 0.75rem;
+  color: var(--color-text-light);
+  font-family: monospace;
+}
+.counter-text.limit-reached {
+  color: var(--color-error);
+  font-weight: 700;
+}
+
+.field-error-message {
+  font-size: 0.78125rem;
+  color: var(--color-error);
+  font-weight: 500;
+  min-height: 1.1em;
+}
+
+.form-submit-row {
+  margin-top: 0.5rem;
+}
+
+.btn-submit-enquiry {
+  width: 100%;
+  background: var(--color-brand-red);
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 0.85rem;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 4px 14px var(--color-brand-red-glow);
+  transition: var(--transition-normal);
+}
+.btn-submit-enquiry:hover:not(:disabled) {
+  background: var(--color-brand-red-hover);
+  box-shadow: 0 6px 18px var(--color-brand-red-glow);
+  transform: translateY(-1px);
+}
+.btn-submit-enquiry:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+/* Success View inside Modal */
+.success-feedback-box {
+  text-align: center;
+  padding: 2.5rem 1rem;
+}
+
+.success-badge-icon {
+  margin: 0 auto 1.25rem auto;
+  display: flex;
+  justify-content: center;
+}
+
+.success-heading {
+  font-size: 1.75rem;
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+}
+
+.success-submessage {
+  font-size: 1.0625rem;
+  color: var(--color-text-muted);
+  margin-bottom: 2rem;
+}
+
+/* --------------------------------------------------------------------------
+   16. SCROLL REVEAL & ANIMATIONS
+   -------------------------------------------------------------------------- */
+.reveal-on-scroll,
+.reveal-item {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-on-scroll.is-revealed,
+.reveal-item.is-revealed,
+.hero-content.reveal-on-scroll,
+.hero-media.reveal-on-scroll,
+.maintenance-card.reveal-on-scroll {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger for grid items */
+.services-grid .service-card:nth-child(2) { transition-delay: 0.05s; }
+.services-grid .service-card:nth-child(3) { transition-delay: 0.1s; }
+.services-grid .service-card:nth-child(4) { transition-delay: 0.15s; }
+.services-grid .service-card:nth-child(5) { transition-delay: 0.2s; }
+.services-grid .service-card:nth-child(6) { transition-delay: 0.25s; }
+.services-grid .service-card:nth-child(7) { transition-delay: 0.3s; }
+.services-grid .service-card:nth-child(8) { transition-delay: 0.35s; }
+
+.products-grid .product-card:nth-child(2) { transition-delay: 0.08s; }
+.products-grid .product-card:nth-child(3) { transition-delay: 0.16s; }
+.products-grid .product-card:nth-child(4) { transition-delay: 0.24s; }
+
+/* --------------------------------------------------------------------------
+   17. RESPONSIVE DESIGN (MEDIA QUERIES)
+   -------------------------------------------------------------------------- */
+/* Large Desktop (1200px and up) */
+@media (min-width: 1200px) {
+  .hero-title {
+    font-size: 3rem;
+  }
+}
+
+/* Tablets & Small Desktops (max-width: 1024px) */
+@media (max-width: 1024px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    text-align: center;
+  }
+
+  .hero-content {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .dealer-seal-badge {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-cta-group {
+    justify-content: center;
+  }
+
+  .hero-features-strip {
+    justify-content: center;
+  }
+
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .reasons-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .areas-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem 2rem;
+  }
+
+  .strip-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .strip-buttons-group {
+    justify-content: center;
+  }
+}
+
+/* Mobile & Small Tablets (max-width: 768px) */
+@media (max-width: 768px) {
+  .header-top-bar {
+    display: none; /* Hide top bar on mobile to keep header tidy */
+  }
+
+  .main-navigation {
+    display: none; /* Handled by drawer on mobile */
+  }
+
+  .mobile-nav-toggle {
+    display: inline-flex;
+  }
+
+  .mobile-nav-drawer.is-open {
+    display: block;
+  }
+
+  .main-bar-container {
+    padding: 0.6rem 0.75rem;
+    gap: 0.35rem;
+  }
+
+  .site-brand {
+    gap: 0;
+  }
+
+  .site-logo-img {
+    height: 38px;
+    max-width: 155px;
+  }
+
+  .footer-logo-img {
+    height: 38px;
+    max-width: 150px;
+  }
+
+  .header-actions {
+    gap: 0.35rem;
+  }
+
+  /* Keep Enquire Now and WhatsApp visible outside hamburger on mobile */
+  .btn-call-header {
+    display: none; /* Call moves to drawer/hero/footer on mobile to save horizontal space */
+  }
+
+  .btn-whatsapp-header {
+    padding: 0.45rem 0.6rem;
+    font-size: 0.8125rem;
+  }
+
+  .btn-whatsapp-header .action-btn-text {
+    display: none; /* Shows WhatsApp icon on small screens */
+  }
+
+  .btn-enquire-header {
+    font-size: 0.8rem;
+    padding: 0.45rem 0.65rem;
+    white-space: nowrap;
+  }
+
+  .mobile-nav-toggle {
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+  }
+
+  .hero-title {
+    font-size: 2.125rem;
+  }
+
+  .hero-features-strip {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .products-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .reasons-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .areas-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dealership-feature-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dealership-feature-media {
+    min-height: 240px;
+    height: 240px;
+  }
+
+  .dealership-feature-content {
+    padding: 2rem 1.5rem;
+  }
+
+  .dealership-stats-row {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+  }
+
+  .modal-content {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .floating-whatsapp {
+    width: 52px;
+    height: 52px;
+    bottom: 18px;
+    right: 18px;
+  }
+  .whatsapp-icon-wrap svg {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+/* Small mobile devices (max-width: 480px) */
+@media (max-width: 480px) {
+  .brand-subtitle {
+    display: none; /* Keep brand compact */
+  }
+
+  .hero-title {
+    font-size: 1.85rem;
+  }
+
+  .hero-cta-group {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero-cta-group .btn {
+    width: 100%;
+  }
+
+  .strip-buttons-group {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .strip-buttons-group .btn {
+    width: 100%;
+  }
+
+  .maintenance-btn-group {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .maintenance-btn-group .btn {
+    width: 100%;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   18. PREFERS REDUCED MOTION
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal-on-scroll,
+  .reveal-item {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .whatsapp-pulse {
+    animation: none !important;
+  }
+}
