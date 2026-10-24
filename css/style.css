@@ -1836,6 +1836,7 @@ footer {
 }
 
 .floating-call {
+  display: none; /* Desktop view: show only floating WhatsApp (hide call) */
   background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
   color: #ffffff;
   box-shadow: 0 6px 20px rgba(2, 132, 199, 0.45);
@@ -2410,9 +2411,13 @@ footer {
     color: #ffffff;
   }
 
-  /* Floating Actions Dock on Mobile: Show ONLY the Call button */
+  /* Floating Actions Dock on Mobile: Show BOTH WhatsApp and Phone */
+  .floating-call {
+    display: flex !important;
+  }
+
   .floating-whatsapp {
-    display: none !important;
+    display: flex !important;
   }
 
   .areas-note-banner {
@@ -3020,7 +3025,8 @@ footer {
     transform: none !important;
   }
 
-  .whatsapp-pulse {
+  .whatsapp-pulse,
+  .call-pulse {
     animation: none !important;
   }
 }
