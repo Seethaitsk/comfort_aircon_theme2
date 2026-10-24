@@ -558,7 +558,7 @@ h1, h2, h3, h4, h5, h6 {
   position: relative;
   background: linear-gradient(145deg, #061426 0%, #0a1c36 50%, #061222 100%);
   color: #ffffff;
-  padding: 5rem 0 5.5rem 0;
+  padding: 2.25rem 0 2.5rem 0;
   overflow: hidden;
 }
 
@@ -589,15 +589,15 @@ h1, h2, h3, h4, h5, h6 {
 
 .hero-grid {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
+  grid-template-columns: 1fr 1.12fr;
   align-items: center;
-  gap: 3.5rem;
+  gap: 2rem;
   position: relative;
   z-index: 2;
 }
 
 .hero-content {
-  max-width: 620px;
+  max-width: 580px;
 }
 
 .hero-tag-pill {
@@ -611,9 +611,9 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.8px;
-  padding: 0.4rem 1rem;
+  padding: 0.35rem 0.95rem;
   border-radius: var(--radius-pill);
-  margin-bottom: 1.25rem;
+  margin-bottom: 0.85rem;
 }
 
 .pill-dot {
@@ -625,12 +625,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .hero-title {
-  font-size: clamp(2.3rem, 4.6vw, 3.6rem);
+  font-size: clamp(2.2rem, 4.2vw, 3.4rem);
   font-weight: 800;
   color: #ffffff;
   line-height: 1.12;
   letter-spacing: -0.03em;
-  margin-bottom: 1.25rem;
+  margin-bottom: 0.9rem;
 }
 
 .hero-title-accent {
@@ -639,19 +639,19 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .hero-description {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   color: #94a3b8;
-  line-height: 1.65;
-  margin-bottom: 2rem;
-  max-width: 560px;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  max-width: 540px;
 }
 
 .hero-cta-group {
   display: flex;
   align-items: center;
-  gap: 1.15rem;
+  gap: 1rem;
   flex-wrap: wrap;
-  margin-bottom: 2.25rem;
+  margin-bottom: 1.65rem;
 }
 
 /* Key Highlights Strip */
@@ -659,7 +659,7 @@ h1, h2, h3, h4, h5, h6 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.25rem;
-  padding-top: 1.75rem;
+  padding-top: 1.35rem;
   border-top: 1px solid rgba(255, 255, 255, 0.12);
 }
 
@@ -694,26 +694,27 @@ h1, h2, h3, h4, h5, h6 {
 .hero-media {
   position: relative;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
+  width: 100%;
 }
 
 .hero-banner-wrapper {
   position: relative;
   width: 100%;
-  max-width: 680px;
+  max-width: 740px;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
 }
 
 .hero-banner-png {
   width: 100%;
-  max-width: 680px;
+  max-width: 740px;
   height: auto;
   display: block;
   object-fit: contain;
-  filter: drop-shadow(0 20px 40px rgba(0, 10, 30, 0.55));
+  filter: drop-shadow(0 20px 45px rgba(0, 10, 30, 0.5));
   transition: transform 0.35s ease;
 }
 
