@@ -301,14 +301,22 @@
     const errorEl = document.getElementById('error-' + fieldId);
     const inputEl = document.getElementById('enquiry-' + fieldId);
     if (errorEl) errorEl.textContent = message;
-    if (inputEl) inputEl.classList.add('is-invalid');
+    if (inputEl) {
+      inputEl.classList.add('is-invalid');
+      const wrap = inputEl.closest('.phone-input-wrap');
+      if (wrap) wrap.classList.add('is-invalid');
+    }
   }
 
   function clearError(fieldId) {
     const errorEl = document.getElementById('error-' + fieldId);
     const inputEl = document.getElementById('enquiry-' + fieldId);
     if (errorEl) errorEl.textContent = '';
-    if (inputEl) inputEl.classList.remove('is-invalid');
+    if (inputEl) {
+      inputEl.classList.remove('is-invalid');
+      const wrap = inputEl.closest('.phone-input-wrap');
+      if (wrap) wrap.classList.remove('is-invalid');
+    }
   }
 
   function clearFormErrors() {
