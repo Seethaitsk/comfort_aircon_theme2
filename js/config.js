@@ -33,50 +33,58 @@ const CONFIG = {
     {
       id: "ac-installation",
       name: "AC Installation",
+      image: "assets/images/service-installation.jpg",
       shortDesc: "Professional installation for split and cassette ACs ensuring peak cooling efficiency.",
       icon: "installation"
     },
     {
       id: "repair",
-      name: "Repair",
+      name: "AC Repair & Service",
+      image: "assets/images/service-repair.jpg",
       shortDesc: "Fast diagnosis and precision repair for cooling issues, compressor faults, and electrical errors.",
       icon: "repair"
     },
     {
       id: "service-maintenance",
-      name: "Service & Maintenance",
+      name: "Maintenance",
+      image: "assets/images/service-maintenance.jpg",
       shortDesc: "Comprehensive periodic maintenance to extend AC lifespan and lower electricity bills.",
       icon: "maintenance"
     },
     {
+      id: "commercial-ac-services",
+      name: "Refrigeration Solutions",
+      image: "assets/images/service-refrigeration.jpg",
+      shortDesc: "Commercial and industrial refrigeration, VRF centralized HVAC, and cold storage units.",
+      icon: "commercial"
+    },
+    {
       id: "gas-filling",
       name: "Gas Filling",
+      image: "assets/images/service-gas-filling.jpg",
       shortDesc: "Genuine R32 / R410A refrigerant leak testing, vacuuming, and precise gas top-up.",
       icon: "gas"
     },
     {
       id: "cleaning-troubleshooting",
       name: "Cleaning & Troubleshooting",
+      image: "assets/images/service-cleaning.jpg",
       shortDesc: "Deep jet chemical wash for filters, indoor cooling coils, blower, and outdoor condenser.",
       icon: "cleaning"
     },
     {
       id: "replacement",
       name: "Replacement",
+      image: "assets/images/service-replacement.jpg",
       shortDesc: "Hassle-free replacement of old, obsolete air conditioners with energy-efficient Carrier units.",
       icon: "replacement"
     },
     {
       id: "annual-maintenance",
       name: "Annual Maintenance",
+      image: "assets/images/service-annual-maintenance.jpg",
       shortDesc: "Cost-effective AMC packages with scheduled preventive check-ups and priority breakdown support.",
       icon: "amc"
-    },
-    {
-      id: "commercial-ac-services",
-      name: "Commercial AC Services",
-      shortDesc: "Heavy-duty HVAC, ductable, and cassette AC solutions for offices, showrooms, and commercial spaces.",
-      icon: "commercial"
     }
   ],
 

@@ -75,7 +75,7 @@
       { name: 'Services', href: 'services.html' },
       { name: 'Products', href: 'products.html' },
       { name: 'Gallery', href: 'gallery.html' },
-      { name: 'Contact Us', href: 'contact.html' }
+      { name: 'Contact', href: 'contact.html' }
     ];
 
     const navLinksHtml = navItems.map(item => {
@@ -87,28 +87,7 @@
 
     headerContainer.innerHTML = `
       <header class="site-header" id="main-header">
-        <!-- Top Bar -->
-        <div class="header-top-bar">
-          <div class="container top-bar-container">
-            <div class="top-bar-contact">
-              <a href="${conf.callLink}" class="top-contact-link" aria-label="Call Comfort Aircon">
-                ${ICONS.phone} <span>${conf.phone}</span>
-              </a>
-              <span class="top-divider" aria-hidden="true">|</span>
-              <a href="mailto:${conf.email}" class="top-contact-link" aria-label="Email Comfort Aircon">
-                ${ICONS.mail} <span>${conf.email}</span>
-              </a>
-            </div>
-            <div class="top-bar-right">
-              <span class="authorized-badge-sm">Authorized Carrier Dealer</span>
-              <div class="top-social-links" aria-label="Social links">
-                ${socialMarkup}
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Main Nav Bar -->
+        <!-- Main Nav Bar (Modern White Navbar) -->
         <div class="header-main-bar" id="main-nav-bar">
           <div class="container main-bar-container">
             <!-- Brand Logo -->
@@ -123,16 +102,13 @@
               </ul>
             </nav>
 
-            <!-- Header Action Buttons (Enquire & WhatsApp stay visible on mobile) -->
+            <!-- Header Action Buttons -->
             <div class="header-actions">
-              <a href="${conf.callLink}" class="btn btn-call-header" aria-label="Call Comfort Aircon">
-                ${ICONS.phone} <span class="action-btn-text">Call</span>
-              </a>
               <a href="${conf.whatsappLink}" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp-header" aria-label="Chat with Comfort Aircon on WhatsApp">
                 ${ICONS.whatsapp} <span class="action-btn-text">WhatsApp</span>
               </a>
-              <button type="button" class="btn btn-enquire-header" data-action="open-enquiry" aria-label="Open Enquiry Form">
-                Enquire Now
+              <button type="button" class="btn btn-pill-red-header" data-action="open-enquiry" aria-label="Book a Service">
+                ${ICONS.phone} <span>Book a Service</span>
               </button>
 
               <!-- Mobile Hamburger Toggle -->
@@ -174,7 +150,7 @@
   }
 
   /**
-   * Build Footer Component
+   * Build Footer Component (Modern & Bold Dark Footer)
    */
   function injectFooter() {
     const footerContainer = document.getElementById('site-footer');
@@ -192,21 +168,16 @@
       <footer class="site-footer">
         <div class="footer-top-section">
           <div class="container footer-grid">
-            <!-- Column 1: About -->
+            <!-- Column 1: Brand Info -->
             <div class="footer-col footer-about-col">
               <a href="index.html" class="footer-brand" aria-label="Comfort Aircon Home">
-                <span class="footer-logo-card">
-                  <img src="assets/images/logo.png" alt="Comfort Aircon - Complete Cooling Solutions" class="footer-logo-img" width="180" height="73" />
-                </span>
+                <img src="assets/images/logo.jpeg" alt="Comfort Aircon - Complete Cooling Solutions" class="footer-logo-img" width="180" height="73" />
               </a>
               <p class="footer-about-text">
-                Your premier Authorized Carrier Air Conditioner dealer in Pondicherry. Delivering top-tier cooling solutions, genuine Carrier units, expert installations, and trusted AC repairs.
+                Your premier Authorized Carrier Air Conditioner dealer in Pondicherry. Cooler spaces, happier lives with genuine Carrier units, expert installations, and trusted repairs.
               </p>
               <div class="footer-dealer-tag">
                 <span class="tag-badge">Authorized Carrier AC Dealer</span>
-              </div>
-              <div class="footer-social-links" aria-label="Social media links">
-                ${socialMarkup}
               </div>
             </div>
 
@@ -219,11 +190,11 @@
                 <li><a href="services.html" class="footer-link">Services</a></li>
                 <li><a href="products.html" class="footer-link">Products</a></li>
                 <li><a href="gallery.html" class="footer-link">Gallery</a></li>
-                <li><a href="contact.html" class="footer-link">Contact Us</a></li>
+                <li><a href="contact.html" class="footer-link">Contact</a></li>
               </ul>
             </div>
 
-            <!-- Column 3: Our Services (all 8) -->
+            <!-- Column 3: Our Services -->
             <div class="footer-col">
               <h3 class="footer-col-title">Our Services</h3>
               <ul class="footer-links-list">
@@ -231,39 +202,19 @@
               </ul>
             </div>
 
-            <!-- Column 4: Contact & Locations -->
+            <!-- Column 4: Service Areas & Contact -->
             <div class="footer-col footer-contact-col">
-              <h3 class="footer-col-title">Contact Us</h3>
-              <ul class="footer-contact-list">
-                <li class="footer-contact-item">
-                  <span class="contact-icon" aria-hidden="true">${ICONS.mapPin}</span>
-                  <span>${conf.address}</span>
-                </li>
-                <li class="footer-contact-item">
-                  <span class="contact-icon" aria-hidden="true">${ICONS.phone}</span>
-                  <a href="${conf.callLink}" class="footer-link">${conf.phone}</a>
-                </li>
-                <li class="footer-contact-item">
-                  <span class="contact-icon" aria-hidden="true">${ICONS.whatsapp}</span>
-                  <a href="${conf.whatsappLink}" target="_blank" rel="noopener noreferrer" class="footer-link">WhatsApp: ${conf.whatsapp}</a>
-                </li>
-                <li class="footer-contact-item">
-                  <span class="contact-icon" aria-hidden="true">${ICONS.mail}</span>
-                  <a href="mailto:${conf.email}" class="footer-link">${conf.email}</a>
-                </li>
-                <li class="footer-contact-item">
-                  <span class="contact-icon" aria-hidden="true">${ICONS.clock}</span>
-                  <span>${conf.workingHours}</span>
-                </li>
+              <h3 class="footer-col-title">Service Areas</h3>
+              <ul class="footer-links-list footer-areas-list">
+                <li><a href="index.html#areas" class="footer-link">Pondicherry</a></li>
+                <li><a href="index.html#areas" class="footer-link">Villupuram</a></li>
+                <li><a href="index.html#areas" class="footer-link">Cuddalore</a></li>
+                <li><a href="index.html#areas" class="footer-link">Nearby Locations</a></li>
               </ul>
-              <div class="footer-maps-wrap">
-                <a href="${conf.googleMapsLink}" target="_blank" rel="noopener noreferrer" class="footer-map-btn">
-                  View on Google Maps &rarr;
-                </a>
-              </div>
-              <div class="footer-service-areas">
-                <h4 class="areas-title">Service Areas:</h4>
-                <p class="areas-text">Pondicherry, Villupuram, Cuddalore and nearby locations.</p>
+              
+              <div class="footer-contact-summary">
+                <a href="${conf.callLink}" class="footer-contact-quick">${ICONS.phone} <span>${conf.phone}</span></a>
+                <a href="mailto:${conf.email}" class="footer-contact-quick">${ICONS.mail} <span>${conf.email}</span></a>
               </div>
             </div>
           </div>
@@ -273,11 +224,11 @@
         <div class="footer-bottom-strip">
           <div class="container bottom-strip-container">
             <p class="copyright-text">
-              &copy; ${new Date().getFullYear()} Comfort Aircon. All rights reserved. Authorized Carrier AC Dealer in Pondicherry.
+              &copy; 2026 Comfort Aircon. All rights reserved.
             </p>
-            <p class="disclaimer-text">
-              Business Enquiry &amp; Support Portal • Designed for prompt local customer assistance.
-            </p>
+            <div class="footer-social-links" aria-label="Social media links">
+              ${socialMarkup}
+            </div>
           </div>
         </div>
       </footer>

@@ -505,7 +505,16 @@
               data-product-name="${p.name}" 
               aria-label="Enquire about ${p.name}"
             >
-              Enquire About This AC
+              Enquire Now
+            </button>
+            <button 
+              type="button" 
+              class="btn-product-arrow" 
+              data-action="enquire-product" 
+              data-product-name="${p.name}" 
+              aria-label="View or enquire about ${p.name}"
+            >
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
             </button>
           </div>
         </div>
