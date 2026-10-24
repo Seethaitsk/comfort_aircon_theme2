@@ -91,6 +91,10 @@ html {
   font-size: 16px;
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden !important;
+  touch-action: pan-y;
 }
 
 body {
@@ -101,7 +105,11 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden !important;
+  position: relative;
+  touch-action: pan-y;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -159,6 +167,19 @@ h1, h2, h3, h4, h5, h6 {
   margin-right: auto;
   padding-left: 1.25rem;
   padding-right: 1.25rem;
+  box-sizing: border-box;
+}
+
+.site-main,
+.site-header,
+.site-footer,
+section,
+header,
+footer {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
+  box-sizing: border-box;
 }
 
 .site-main {
@@ -419,6 +440,35 @@ h1, h2, h3, h4, h5, h6 {
   flex-shrink: 0;
 }
 
+.btn-call-header {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.55rem 1.05rem;
+  font-size: 0.88rem;
+  font-weight: 700;
+  border-radius: var(--radius-pill);
+  background: #e0f2fe;
+  color: #0369a1;
+  border: 1px solid rgba(2, 132, 199, 0.3);
+  transition: var(--transition-fast);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn-call-header:hover {
+  background: #0284c7;
+  color: #ffffff;
+  border-color: #0284c7;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35);
+}
+
+.btn-call-header svg {
+  width: 15px;
+  height: 15px;
+}
+
 .btn-whatsapp-header {
   display: inline-flex;
   align-items: center;
@@ -451,6 +501,16 @@ h1, h2, h3, h4, h5, h6 {
   color: #ffffff;
   box-shadow: 0 4px 14px var(--color-brand-red-glow);
   transition: var(--transition-fast);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.btn-pill-red-header .btn-text-short {
+  display: none;
+}
+
+.btn-pill-red-header .btn-text-full {
+  display: inline;
 }
 
 .btn-pill-red-header:hover {
@@ -479,6 +539,10 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: var(--shadow-lg);
   padding: 1.25rem;
   animation: slideDown 0.25s ease-out;
+}
+
+.mobile-nav-drawer.is-open {
+  display: block;
 }
 
 .mobile-dealer-badge {
@@ -524,6 +588,36 @@ h1, h2, h3, h4, h5, h6 {
   text-transform: uppercase;
   color: var(--color-text-muted);
   margin-bottom: 0.6rem;
+}
+
+.btn-drawer-call {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  width: 100%;
+  padding: 0.75rem 1.25rem;
+  margin-top: 0.4rem;
+  margin-bottom: 0.85rem;
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+  color: #ffffff !important;
+  font-size: 0.95rem;
+  font-weight: 700;
+  border-radius: var(--radius-pill);
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35);
+  transition: var(--transition-fast);
+  text-decoration: none;
+}
+
+.btn-drawer-call:hover {
+  background: #0284c7;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(2, 132, 199, 0.45);
+}
+
+.btn-drawer-call svg {
+  width: 18px;
+  height: 18px;
 }
 
 .mobile-contact-item {
@@ -652,6 +746,34 @@ h1, h2, h3, h4, h5, h6 {
   gap: 1rem;
   flex-wrap: wrap;
   margin-bottom: 1.65rem;
+}
+
+.btn-pill-call {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.75rem 1.45rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  border-radius: var(--radius-pill);
+  background: rgba(2, 132, 199, 0.16);
+  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.45);
+  transition: var(--transition-fast);
+  text-decoration: none;
+}
+
+.btn-pill-call:hover {
+  background: #0284c7;
+  color: #ffffff;
+  border-color: #0284c7;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(2, 132, 199, 0.4);
+}
+
+.btn-pill-call svg {
+  width: 18px;
+  height: 18px;
 }
 
 /* Key Highlights Strip */
@@ -1335,7 +1457,7 @@ h1, h2, h3, h4, h5, h6 {
   background: var(--color-royal-blue);
   color: #ffffff;
   border-radius: var(--radius-sm);
-  padding: 1rem 2rem;
+  padding: 1.1rem 2rem;
   text-align: center;
   font-size: 0.95rem;
   font-weight: 600;
@@ -1348,6 +1470,24 @@ h1, h2, h3, h4, h5, h6 {
 
 .areas-note-banner svg {
   flex-shrink: 0;
+}
+
+.helpline-call-link {
+  color: #ffffff;
+  font-weight: 800;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  background: rgba(255, 255, 255, 0.18);
+  padding: 0.2rem 0.65rem;
+  border-radius: var(--radius-pill);
+  display: inline-block;
+  transition: var(--transition-fast);
+}
+
+.helpline-call-link:hover {
+  background: #ffffff;
+  color: var(--color-royal-blue);
+  text-decoration: none;
 }
 
 /* --------------------------------------------------------------------------
@@ -1405,7 +1545,40 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .strip-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
   flex-shrink: 0;
+}
+
+.btn-strip-call {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.85rem 1.75rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  border-radius: var(--radius-pill);
+  background: #0284c7;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn-strip-call:hover {
+  background: #0369a1;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.25);
+}
+
+.btn-strip-call svg {
+  width: 18px;
+  height: 18px;
 }
 
 .btn-strip-white-pill {
@@ -1632,77 +1805,119 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* --------------------------------------------------------------------------
-   14. FLOATING WHATSAPP BUTTON
+   14. FLOATING QUICK ACTION DOCK (Call + WhatsApp)
    -------------------------------------------------------------------------- */
-.floating-whatsapp {
+.floating-actions-dock {
   position: fixed;
   bottom: 24px;
   right: 24px;
-  width: 58px;
-  height: 58px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  z-index: 900;
+}
+
+.floating-btn {
+  position: relative;
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
-  background: var(--color-whatsapp);
-  color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
-  z-index: 900;
   cursor: pointer;
-  transition: transform var(--transition-normal);
+  transition: transform var(--transition-normal), box-shadow var(--transition-fast);
+  text-decoration: none;
+}
+
+.floating-btn:hover {
+  transform: scale(1.08) translateY(-2px);
+}
+
+.floating-call {
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+  color: #ffffff;
+  box-shadow: 0 6px 20px rgba(2, 132, 199, 0.45);
+}
+
+.floating-call:hover {
+  box-shadow: 0 10px 26px rgba(2, 132, 199, 0.55);
+}
+
+.floating-whatsapp {
+  background: var(--color-whatsapp);
+  color: #ffffff;
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45);
 }
 
 .floating-whatsapp:hover {
-  transform: scale(1.08);
+  box-shadow: 0 10px 26px rgba(37, 211, 102, 0.55);
 }
 
-.whatsapp-icon-wrap {
+.floating-icon-wrap {
   position: relative;
   z-index: 2;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 30px;
-  height: 30px;
+  width: 28px;
+  height: 28px;
 }
 
-.whatsapp-icon-wrap svg {
-  width: 32px;
-  height: 32px;
+.floating-icon-wrap svg {
+  width: 26px;
+  height: 26px;
 }
 
-.whatsapp-pulse {
+.floating-pulse {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  background: var(--color-whatsapp);
   opacity: 0.7;
-  animation: whatsappPulse 2.2s infinite ease-out;
   z-index: 1;
 }
 
-.whatsapp-tooltip {
+.call-pulse {
+  background: #0284c7;
+  animation: callPulse 2.4s infinite ease-out;
+}
+
+.whatsapp-pulse {
+  background: var(--color-whatsapp);
+  animation: whatsappPulse 2.4s infinite ease-out;
+  animation-delay: 1.2s;
+}
+
+.floating-tooltip {
   position: absolute;
-  right: 70px;
+  right: 68px;
   background: #0f172a;
   color: #ffffff;
-  font-size: 0.75rem;
+  font-size: 0.78rem;
   font-weight: 600;
-  padding: 0.35rem 0.7rem;
+  padding: 0.35rem 0.75rem;
   border-radius: var(--radius-xs);
   white-space: nowrap;
   pointer-events: none;
   opacity: 0;
-  transform: translateX(10px);
+  transform: translateX(8px);
   transition: var(--transition-fast);
+  box-shadow: var(--shadow-md);
 }
 
-.floating-whatsapp:hover .whatsapp-tooltip {
+.floating-btn:hover .floating-tooltip {
   opacity: 1;
   transform: translateX(0);
+}
+
+@keyframes callPulse {
+  0% { transform: scale(0.95); opacity: 0.8; }
+  50% { transform: scale(1.35); opacity: 0; }
+  100% { transform: scale(1.35); opacity: 0; }
 }
 
 @keyframes whatsappPulse {
@@ -2065,12 +2280,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* --------------------------------------------------------------------------
-   17. RESPONSIVE BREAKPOINTS
+   17. RESPONSIVE BREAKPOINTS (Mobile-First Polish)
    -------------------------------------------------------------------------- */
+
+/* Tablet & Smaller Desktops (<= 1024px) */
 @media (max-width: 1024px) {
   .hero-grid {
     grid-template-columns: 1fr;
-    gap: 2.5rem;
+    gap: 2rem;
     text-align: center;
   }
 
@@ -2079,20 +2296,38 @@ h1, h2, h3, h4, h5, h6 {
     margin: 0 auto;
   }
 
+  .hero-description {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   .hero-cta-group {
     justify-content: center;
   }
 
   .hero-features-strip {
     justify-content: center;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .hero-media {
+    justify-content: center;
+  }
+
+  .hero-banner-wrapper {
+    justify-content: center;
+    margin: 0 auto;
   }
 
   .services-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
   }
 
   .products-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
   }
 
   .advantage-pillars-grid {
@@ -2122,7 +2357,9 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+/* Tablets & Mobile Devices (<= 768px) */
 @media (max-width: 768px) {
+  /* Navbar */
   .main-navigation {
     display: none;
   }
@@ -2131,94 +2368,641 @@ h1, h2, h3, h4, h5, h6 {
     display: inline-flex;
   }
 
-  .mobile-nav-drawer.is-open {
-    display: block;
-  }
-
   .main-bar-container {
-    padding: 0.65rem 0.85rem;
+    padding: 0.5rem 0.85rem;
+    gap: 0.6rem;
   }
 
   .site-logo-img {
-    height: 40px;
-    max-width: 155px;
+    height: 34px;
+    max-width: 125px;
   }
 
-  .btn-whatsapp-header .action-btn-text {
-    display: none;
+  .header-actions {
+    gap: 0.55rem;
+    flex-shrink: 0;
   }
 
+  /* Header Actions on Mobile: Show ONLY the Call button (+ menu toggle) */
+  .btn-whatsapp-header,
   .btn-pill-red-header {
-    padding: 0.5rem 0.95rem;
-    font-size: 0.82rem;
+    display: none !important;
+  }
+
+  .btn-call-header {
+    background: #0284c7;
+    color: #ffffff;
+    border: none;
+    padding: 0.45rem 0.95rem;
+    font-size: 0.84rem;
+    font-weight: 700;
+    border-radius: var(--radius-pill);
+    gap: 0.4rem;
+    box-shadow: 0 2px 10px rgba(2, 132, 199, 0.35);
+    white-space: nowrap;
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .btn-call-header:hover {
+    background: #0369a1;
+    color: #ffffff;
+  }
+
+  /* Floating Actions Dock on Mobile: Show ONLY the Call button */
+  .floating-whatsapp {
+    display: none !important;
+  }
+
+  .areas-note-banner {
+    padding: 0.9rem 1rem;
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+    font-size: 0.88rem;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Section Spacing & Headings */
+  .section-padding {
+    padding-top: 2.75rem;
+    padding-bottom: 3rem;
+  }
+
+  .section-header {
+    margin-bottom: 1.75rem;
+  }
+
+  .section-tag-pill {
+    font-size: 0.7rem;
+    padding: 0.28rem 0.75rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .section-title {
+    font-size: 1.65rem;
+    line-height: 1.22;
+    margin-bottom: 0.5rem;
+  }
+
+  .section-desc {
+    font-size: 0.92rem;
+    line-height: 1.5;
+  }
+
+  /* Hero Section */
+  .hero-section {
+    padding: 1.75rem 0 2rem 0;
+  }
+
+  .hero-grid {
+    gap: 1.5rem;
+  }
+
+  .hero-tag-pill {
+    font-size: 0.7rem;
+    letter-spacing: 0.5px;
+    padding: 0.28rem 0.75rem;
+    margin-bottom: 0.65rem;
+    max-width: 100%;
+    white-space: normal;
+    line-height: 1.3;
   }
 
   .hero-title {
-    font-size: 2.2rem;
+    font-size: 2rem;
+    line-height: 1.15;
+    margin-bottom: 0.65rem;
+  }
+
+  .hero-description {
+    font-size: 0.92rem;
+    line-height: 1.55;
+    margin-bottom: 1.25rem;
+  }
+
+  .hero-cta-group {
+    margin-bottom: 1.25rem;
+    gap: 0.75rem;
   }
 
   .hero-features-strip {
     grid-template-columns: 1fr;
-    gap: 0.75rem;
+    gap: 0.65rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
   }
 
+  .hero-feature-item {
+    justify-content: center;
+  }
+
+  .hero-feature-text {
+    font-size: 0.82rem;
+    text-align: left;
+  }
+
+  .hero-banner-wrapper {
+    max-width: 100%;
+    margin-top: 0.75rem;
+  }
+
+  .hero-banner-png {
+    max-width: 420px;
+    margin: 0 auto;
+  }
+
+  /* Services Section */
   .services-grid {
     grid-template-columns: 1fr;
+    gap: 1.25rem;
+    margin-top: 1.25rem;
+    margin-bottom: 1.5rem;
   }
 
+  .service-card-image-wrap {
+    height: 180px;
+  }
+
+  .service-card-body {
+    padding: 1.25rem;
+  }
+
+  .service-name {
+    font-size: 1.15rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .service-desc {
+    font-size: 0.88rem;
+    margin-bottom: 0.85rem;
+  }
+
+  /* Products Section */
   .products-grid {
     grid-template-columns: 1fr;
+    gap: 1.25rem;
+    margin-top: 1.25rem;
+    margin-bottom: 1.5rem;
   }
 
+  .product-image-wrap {
+    height: 210px;
+  }
+
+  .product-content {
+    padding: 1.25rem;
+  }
+
+  .product-name {
+    font-size: 1.15rem;
+  }
+
+  /* Advantage Pillars - Clean 2x2 Grid */
   .advantage-pillars-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.85rem;
+    margin-top: 1.25rem;
+    margin-bottom: 1.5rem;
   }
 
+  .advantage-pillar-card {
+    padding: 1.25rem 0.75rem;
+    border-radius: var(--radius-md);
+  }
+
+  .pillar-circle-badge {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 0.65rem;
+  }
+
+  .pillar-circle-badge svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .pillar-title {
+    font-size: 0.95rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .pillar-desc {
+    font-size: 0.78rem;
+    line-height: 1.4;
+  }
+
+  /* Detailed Reasons Grid - 1 column on tablets & mobile */
   .reasons-grid {
     grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-top: 1.25rem;
+    margin-bottom: 2rem;
   }
 
-  .areas-grid {
-    grid-template-columns: 1fr;
+  .reason-card {
+    padding: 1.25rem 1.15rem;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .reason-number {
+    font-size: 1.35rem;
+    flex-shrink: 0;
+  }
+
+  .reason-title {
+    font-size: 1.05rem;
+    line-height: 1.3;
+    margin-bottom: 0.35rem;
+  }
+
+  .reason-desc {
+    font-size: 0.88rem;
+    line-height: 1.5;
+  }
+
+  /* Dealership Feature */
+  .dealership-feature-banner {
+    margin-top: 1.5rem;
+    border-radius: 16px;
+  }
+
+  .dealership-feature-media {
+    height: 220px;
+    min-height: 220px;
   }
 
   .dealership-feature-content {
-    padding: 2rem 1.5rem;
+    padding: 1.75rem 1.25rem;
+  }
+
+  .dealership-feature-title {
+    font-size: 1.45rem;
+    line-height: 1.22;
+  }
+
+  .dealership-feature-desc {
+    font-size: 0.88rem;
+    line-height: 1.5;
+    margin-bottom: 1.25rem;
   }
 
   .dealership-stats-row {
     grid-template-columns: repeat(3, 1fr);
-    gap: 0.5rem;
+    gap: 0.4rem;
+    padding: 0.85rem 0;
+    margin-bottom: 1.25rem;
   }
 
+  .stat-number {
+    font-size: 1.3rem;
+  }
+
+  .stat-label {
+    font-size: 0.72rem;
+  }
+
+  /* Service Areas */
+  .areas-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    margin-top: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .area-pill-card {
+    padding: 0.85rem 1.15rem;
+  }
+
+  .area-pill-name {
+    font-size: 0.95rem;
+  }
+
+  .helpline-strip-bar {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.45rem;
+    padding: 0.85rem 1rem;
+    font-size: 0.85rem;
+  }
+
+  /* Enquiry Banner Strip */
   .enquiry-strip-card {
     flex-direction: column;
     text-align: center;
-    padding: 2rem 1.5rem;
+    padding: 1.75rem 1.25rem;
+    gap: 1.25rem;
+    border-radius: 16px;
   }
 
   .strip-left-group {
     flex-direction: column;
     text-align: center;
+    gap: 0.75rem;
+  }
+
+  .strip-icon-circle {
+    width: 46px;
+    height: 46px;
+    margin: 0 auto;
+  }
+
+  .strip-title {
+    font-size: 1.3rem;
+  }
+
+  .strip-desc {
+    font-size: 0.88rem;
+  }
+
+  .strip-actions {
+    width: 100%;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .btn-strip-call,
+  .btn-strip-white-pill {
+    width: 100%;
+    justify-content: center;
+    padding: 0.8rem 1.25rem;
+    font-size: 0.92rem;
+  }
+
+  /* Footer */
+  .site-footer {
+    padding-top: 3rem;
   }
 
   .footer-grid {
     grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .bottom-strip-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.75rem;
   }
 }
 
-@media (max-width: 480px) {
+/* Mobile Small Screens (<= 520px) */
+@media (max-width: 520px) {
+  /* Navbar */
+  .main-bar-container {
+    padding: 0.45rem 0.65rem;
+    gap: 0.4rem;
+  }
+
+  .site-logo-img {
+    height: 30px;
+    max-width: 105px;
+  }
+
+  .header-actions {
+    gap: 0.45rem;
+  }
+
+  .btn-call-header {
+    padding: 0.42rem 0.82rem;
+    font-size: 0.8rem;
+    gap: 0.35rem;
+  }
+
+  .btn-call-header svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .mobile-nav-toggle {
+    width: 36px;
+    height: 36px;
+  }
+
+  /* Section Spacing */
+  .section-padding {
+    padding-top: 2rem;
+    padding-bottom: 2.25rem;
+  }
+
+  .container {
+    padding-left: 0.85rem;
+    padding-right: 0.85rem;
+  }
+
+  .section-title {
+    font-size: 1.45rem;
+    line-height: 1.24;
+  }
+
+  .section-desc {
+    font-size: 0.88rem;
+  }
+
+  /* Hero Section */
+  .hero-title {
+    font-size: 1.75rem;
+    line-height: 1.16;
+  }
+
+  .hero-tag-pill {
+    font-size: 0.64rem;
+    letter-spacing: 0.3px;
+    padding: 0.25rem 0.6rem;
+  }
+
   .hero-cta-group {
     flex-direction: column;
     width: 100%;
+    gap: 0.65rem;
   }
 
   .hero-cta-group .btn {
     width: 100%;
+    justify-content: center;
+    padding: 0.72rem 1rem;
+    font-size: 0.9rem;
   }
 
-  .btn-strip-white-pill {
-    width: 100%;
+  .hero-banner-png {
+    max-width: 330px;
+  }
+
+  /* Service Cards */
+  .service-card-image-wrap {
+    height: 160px;
+  }
+
+  .service-card-body {
+    padding: 1.15rem 1rem;
+  }
+
+  /* Product Cards */
+  .product-image-wrap {
+    height: 180px;
+  }
+
+  .product-content {
+    padding: 1.15rem 0.85rem;
+  }
+
+  .product-info-heading {
+    font-size: 0.68rem;
+  }
+
+  .product-spec-text,
+  .product-feature-text {
+    font-size: 0.78rem;
+  }
+
+  .btn-product-enquire {
+    font-size: 0.82rem;
+    padding: 0.6rem 0.85rem;
+  }
+
+  /* Detailed Reasons Grid on Small Phones */
+  .reason-card {
+    padding: 1.15rem 1rem;
+    gap: 0.85rem;
+  }
+
+  .reason-number {
+    font-size: 1.25rem;
+  }
+
+  .reason-title {
+    font-size: 1rem;
+  }
+
+  .reason-desc {
+    font-size: 0.85rem;
+    line-height: 1.48;
+  }
+
+  /* Floating Actions Dock */
+  .floating-actions-dock {
+    bottom: 16px;
+    right: 16px;
+    gap: 10px;
+  }
+
+  .floating-btn {
+    width: 48px;
+    height: 48px;
+  }
+
+  .floating-icon-wrap {
+    width: 24px;
+    height: 24px;
+  }
+
+  .floating-icon-wrap svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .floating-tooltip {
+    display: none;
+  }
+}
+
+/* Narrow Phones (<= 420px) */
+@media (max-width: 420px) {
+  .site-logo-img {
+    height: 28px;
+    max-width: 95px;
+  }
+
+  .main-bar-container {
+    padding: 0.4rem 0.5rem;
+    gap: 0.35rem;
+  }
+
+  .header-actions {
+    gap: 0.35rem;
+  }
+
+  .btn-call-header {
+    padding: 0.38rem 0.72rem;
+    font-size: 0.78rem;
+    gap: 0.3rem;
+  }
+
+  .btn-call-header svg {
+    width: 13px;
+    height: 13px;
+  }
+}
+
+/* Extra Small Phones (<= 380px) */
+@media (max-width: 380px) {
+  .site-logo-img {
+    height: 26px;
+    max-width: 86px;
+  }
+
+  .main-bar-container {
+    padding: 0.35rem 0.4rem;
+    gap: 0.25rem;
+  }
+
+  .header-actions {
+    gap: 0.3rem;
+  }
+
+  .btn-call-header {
+    padding: 0.35rem 0.65rem;
+    font-size: 0.75rem;
+    gap: 0.25rem;
+  }
+
+  .btn-call-header svg {
+    width: 13px;
+    height: 13px;
+  }
+
+  .mobile-nav-toggle {
+    width: 34px;
+    height: 34px;
+  }
+
+  .hero-title {
+    font-size: 1.55rem;
+  }
+
+  .advantage-pillars-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+}
+
+/* Ultra Narrow Phones (<= 330px) */
+@media (max-width: 330px) {
+  .site-logo-img {
+    height: 24px;
+    max-width: 76px;
+  }
+
+  .btn-call-header {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    justify-content: center;
+    border-radius: 50%;
+  }
+
+  .btn-call-header span {
+    display: none !important;
+  }
+
+  .btn-call-header svg {
+    width: 13px;
+    height: 13px;
+    margin: 0;
   }
 }
 

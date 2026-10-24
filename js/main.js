@@ -15,6 +15,8 @@
 
   // Wait for DOM to be ready
   document.addEventListener('DOMContentLoaded', initApp);
+  window.addEventListener('layoutReady', bindConfigLinks);
+  window.addEventListener('load', bindConfigLinks);
 
   function initApp() {
     bindConfigLinks();

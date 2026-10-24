@@ -10,6 +10,7 @@
   // SVG Icon definitions (lightweight, crisp, self-contained)
   const ICONS = {
     phone: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24 11.41 11.41 0 003.58.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.41 11.41 0 00.57 3.58 1 1 0 01-.25 1.02l-2.2 2.19z"/></svg>`,
+    calendar: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2z"/></svg>`,
     mail: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>`,
     whatsapp: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M17.472 14.382c-.301-.15-1.78-.878-2.056-.979-.275-.101-.476-.15-.677.151-.2.302-.777.98-1.028 1.258-.251.277-.502.302-.803.151-1.808-.905-3.32-2.003-4.526-3.824-.15-.226-.016-.349.135-.5.136-.135.302-.351.452-.527.151-.176.201-.301.302-.502.1-.2.05-.376-.026-.527-.075-.15-1.78-4.293-1.854-4.469-.074-.176-.15-.15-.226-.15h-.627c-.226 0-.577.075-.879.377-.301.301-1.154 1.13-1.154 2.76 0 1.63 1.18 3.213 1.356 3.439.176.226 2.333 3.565 5.654 4.996 2.238.966 3.109.99 4.213.84.677-.092 2.056-.84 2.348-1.654.293-.815.293-1.512.206-1.659-.088-.147-.289-.223-.59-.374zM12.04 2C6.51 2 2.03 6.48 2.03 12.01c0 1.98.58 3.82 1.58 5.37L2 22l4.78-1.55a9.98 9.98 0 005.26 1.48c5.53 0 10.01-4.48 10.01-10.01C22.05 6.48 17.57 2 12.04 2zm0 18.23c-1.64 0-3.17-.48-4.47-1.3l-.32-.2-3.32 1.08 1.09-3.23-.21-.34a8.17 8.17 0 01-1.25-4.32c0-4.52 3.68-8.2 8.2-8.2s8.2 3.68 8.2 8.2-3.68 8.31-8.2 8.31z"/></svg>`,
     facebook: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg>`,
@@ -104,11 +105,19 @@
 
             <!-- Header Action Buttons -->
             <div class="header-actions">
+              <!-- Direct Call Button: Opens phone dialer with business number -->
+              <a href="${conf.callLink}" class="btn btn-call-header" data-bind="call-link" aria-label="Call Comfort Aircon: ${conf.phone}">
+                ${ICONS.phone} <span class="action-btn-text">Call</span>
+              </a>
+
+              <!-- WhatsApp Chat Button -->
               <a href="${conf.whatsappLink}" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp-header" aria-label="Chat with Comfort Aircon on WhatsApp">
                 ${ICONS.whatsapp} <span class="action-btn-text">WhatsApp</span>
               </a>
+
+              <!-- Online Booking Enquiry Trigger -->
               <button type="button" class="btn btn-pill-red-header" data-action="open-enquiry" aria-label="Book a Service">
-                ${ICONS.phone} <span>Book a Service</span>
+                ${ICONS.calendar} <span class="btn-text-full">Book a Service</span><span class="btn-text-short">Book</span>
               </button>
 
               <!-- Mobile Hamburger Toggle -->
@@ -132,9 +141,10 @@
               </ul>
             </nav>
             <div class="mobile-drawer-contact">
-              <p class="mobile-contact-title">Contact &amp; Support</p>
-              <a href="${conf.callLink}" class="mobile-contact-item">
-                ${ICONS.phone} <span>${conf.phone}</span>
+              <p class="mobile-contact-title">Direct Calling &amp; Support</p>
+              <!-- Big Tap-to-Call Button in Mobile Drawer -->
+              <a href="${conf.callLink}" class="btn btn-drawer-call" data-bind="call-link" aria-label="Call Comfort Aircon: ${conf.phone}">
+                ${ICONS.phone} <span>Call Us: ${conf.phone}</span>
               </a>
               <a href="mailto:${conf.email}" class="mobile-contact-item">
                 ${ICONS.mail} <span>${conf.email}</span>
@@ -213,7 +223,7 @@
               </ul>
               
               <div class="footer-contact-summary">
-                <a href="${conf.callLink}" class="footer-contact-quick">${ICONS.phone} <span>${conf.phone}</span></a>
+                <a href="${conf.callLink}" class="footer-contact-quick" data-bind="call-link">${ICONS.phone} <span>${conf.phone}</span></a>
                 <a href="mailto:${conf.email}" class="footer-contact-quick">${ICONS.mail} <span>${conf.email}</span></a>
               </div>
             </div>
@@ -236,25 +246,35 @@
   }
 
   /**
-   * Inject Floating WhatsApp Button
+   * Inject Floating Quick Action Dock (Call + WhatsApp)
    */
-  function injectFloatingWhatsApp() {
-    if (document.getElementById('floating-whatsapp-btn')) return;
+  function injectFloatingActions() {
+    if (document.getElementById('floating-actions-dock')) return;
 
     const conf = window.CONFIG;
-    const btn = document.createElement('a');
-    btn.id = 'floating-whatsapp-btn';
-    btn.className = 'floating-whatsapp';
-    btn.href = conf.whatsappLink;
-    btn.target = '_blank';
-    btn.rel = 'noopener noreferrer';
-    btn.setAttribute('aria-label', 'Chat with Comfort Aircon on WhatsApp');
-    btn.innerHTML = `
-      <span class="whatsapp-pulse"></span>
-      <span class="whatsapp-icon-wrap">${ICONS.whatsapp}</span>
-      <span class="whatsapp-tooltip">Chat with us</span>
+    const dock = document.createElement('div');
+    dock.id = 'floating-actions-dock';
+    dock.className = 'floating-actions-dock';
+    dock.setAttribute('role', 'region');
+    dock.setAttribute('aria-label', 'Quick contact actions');
+
+    dock.innerHTML = `
+      <!-- Floating Call Button: Tap opens phone dialer with business number -->
+      <a href="${conf.callLink}" id="floating-call-btn" class="floating-btn floating-call" data-bind="call-link" aria-label="Call Comfort Aircon: ${conf.phone}">
+        <span class="floating-pulse call-pulse"></span>
+        <span class="floating-icon-wrap call-icon-wrap">${ICONS.phone}</span>
+        <span class="floating-tooltip">Call: ${conf.phone}</span>
+      </a>
+
+      <!-- Floating WhatsApp Button -->
+      <a href="${conf.whatsappLink}" id="floating-whatsapp-btn" class="floating-btn floating-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Chat with Comfort Aircon on WhatsApp">
+        <span class="floating-pulse whatsapp-pulse"></span>
+        <span class="floating-icon-wrap whatsapp-icon-wrap">${ICONS.whatsapp}</span>
+        <span class="floating-tooltip">Chat with us</span>
+      </a>
     `;
-    document.body.appendChild(btn);
+
+    document.body.appendChild(dock);
   }
 
   /**
@@ -446,7 +466,7 @@
   function initLayout() {
     injectHeader();
     injectFooter();
-    injectFloatingWhatsApp();
+    injectFloatingActions();
     injectEnquiryModal();
     window.dispatchEvent(new CustomEvent('layoutReady'));
   }
